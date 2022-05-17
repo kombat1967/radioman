@@ -3,50 +3,55 @@ package ru.netology.radio;
 public class Radio {
     private int currentRadioStation;
     private int currentVolume;
-    private int maxRadioStation = 9;
-    private int minRadioStation = 0;
-    private int minVolume = 0;
-    private int maxVolume = 10;
+
+    public void next() {
+        if (currentRadioStation < 9) {
+            currentRadioStation++;
+            return;
+        } else {
+            currentRadioStation = 0;
+            // return;
+        }
+    }
+
+    public void prev() {
+        if (currentRadioStation > 0) {
+            currentRadioStation--
+            ;
+
+        } else {
+            currentRadioStation = 9;
+        }
+    }
+
+    public void increaseVolume() {
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
+            return;
+        }
+    }
+
+    public void decreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
+            return;
+        }
+    }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation < minRadioStation) {
-            // return;
-            currentRadioStation = maxRadioStation;
+        if (currentRadioStation < 0) {
+
+            return;
         }
-        if (currentRadioStation > maxRadioStation) {
-            //return;
-            currentRadioStation = minRadioStation;
+        if (currentRadioStation > 9) {
+            return;
         }
         this.currentRadioStation = currentRadioStation;
 
-    }
-
-    public void setNextRadioStation() {
-        if (currentRadioStation < maxRadioStation) {
-            this.currentRadioStation = currentRadioStation + 1;
-        }
-        // if (currentRadioStation >= maxRadioStation ) {
-        // this.currentRadioStation = minRadioStation;
-        // }
-    }
-
-    public int getNextRadioStation() {
-        return currentRadioStation;
-    }
-
-    public void setPrevRadioStation() {
-
-        int newStation = currentRadioStation - 1;
-        this.currentRadioStation = newStation;
-
-    }
-
-    public int getPrevRadioStation() {
-        return currentRadioStation;
     }
 
     public int getCurrentVolume() {
@@ -54,68 +59,13 @@ public class Radio {
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < minVolume) {
+        if (currentVolume < 0) {
             return;
         }
-        if (currentVolume >= maxVolume) {
-            currentVolume = maxVolume;
+        if (currentVolume > 10) {
+            return;
         }
         this.currentVolume = currentVolume;
     }
 
-
-    public void setIncreaseVolume() {
-        if (currentVolume < maxVolume) {
-            currentVolume = currentVolume + 1;
-        }
-        if (currentVolume >= maxVolume) {
-            currentVolume = maxVolume;
-        }
-        this.currentVolume = currentVolume;
-    }
-
-    public int getIncreaseVolume() {
-        return currentVolume;
-    }
-
-    public void setDecreaseVolume() {
-        if (currentVolume > minVolume) {
-            currentVolume = currentVolume - 1;
-        }
-        if (currentVolume <= minVolume) {
-            currentVolume = minVolume;
-        }
-        this.currentVolume = currentVolume;
-    }
-
-    public int getDecreaseVolume() {
-        return currentVolume;
-    }
-
-    public void setMaxVolume(int currentVolume) {
-        if (currentVolume >= maxVolume) {
-            this.currentVolume = maxVolume;
-        }
-        if (currentVolume < maxVolume) {
-            this.currentVolume = currentVolume;
-        }
-    }
-
-    public int getMaxVolume() {
-        return currentVolume;
-    }
-
-    public void setMinVolume(int currentVolume) {
-        if (currentVolume < 1) {
-            this.currentVolume = minVolume;
-        }
-        if (currentVolume > 1) {
-            this.currentVolume = currentVolume;
-        }
-    }
-
-    public int getMinVolume() {
-
-        return currentVolume;
-    }
 }
